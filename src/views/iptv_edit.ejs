@@ -1,0 +1,45 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/update/<%= iptv.id_iptv %>" method="POST">
+          <input
+            type="text"
+            name="id_iptv"
+            value="<%= iptv.id_iptv%>"
+            placeholder="<%= iptv.id_iptv%>"
+            class="form-control mb-3"
+            disabled
+          />
+        <input
+            type="text"
+            name="nom_Iptv"
+            value="<%= iptv.nom_Iptv%>"
+            placeholder="Nom de l'iptv"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="duree"
+            value="<%=iptv.duree%>"
+            placeholder="Duree de l'iptv"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="id_fournisseur"
+            value="<%=iptv.id_fournisseur%>"
+            placeholder="L'id du fournisseur"
+            class="form-control mb-3"
+          />
+
+          <button type="submit" class="btn btn-primary">save iptv</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

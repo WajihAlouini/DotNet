@@ -1,0 +1,166 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <!--CREATE IPTV-->
+    <div class="col-md-5">
+      <div class="card-body">
+        <form action="/add" method="POST">
+         
+          <input
+            type="text"
+            name="nom_iptv"
+            placeholder="Nom de l'iptv"
+            class="form-control mb-2"
+          />
+          <input
+            type="text"
+            name="duree"
+            placeholder="Duree de l'iptv"
+            class="form-control mb-2"
+          />
+          <select class="form-select mb-2" name="id_fournisseur">
+            <% fournisseur.forEach((fournisseur) => { %>
+            <option value="<%= fournisseur.id_fournisseur %>"><%= fournisseur.nom_fournisseur %></option>
+            <% }); %>
+          </select>
+  
+          <button type="submit" class="btn btn-info">Save Iptv</button>
+  
+        </form>
+      </div>
+    </div>
+    <!--IPTV-->
+    <div class="col-md-7">
+      <table class="table table-dark table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Id de l'Iptv</td>
+            <td>Nom de l'Iptv</td>
+            <td>Duree de l'Iptv</td>
+            <td>L'Id du fournisseur</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (iptv) { %> <% for(var i = 0; i < iptv.length; i++) {
+          %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= iptv[i].id_iptv %></td>
+            <td><%= iptv[i].nom_Iptv %></td>
+            <td><%= iptv[i].duree %></td>
+            <td><%= iptv[i].id_fournisseur %></td>
+            <td class="d-flex gap-2">
+              <a href="/update/<%= iptv[i].id_iptv %>" class="btn btn-info">
+                Edit
+              </a>
+              <a href="/delete/<%= iptv[i].id_iptv %>" class="btn btn-danger">           
+                Delete
+              </a>
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="col-md-5">
+      <div class="col-md-5 mt-5">
+       <div class="card-body">
+         <form action="/addFournisseur" method="POST">
+           <input
+             type="text"
+             name="nom_fournisseur"
+             value="<%=fournisseur.nom_fournisseur%>"
+             placeholder="Nom du fournisseur"
+             class="form-control mb-3"
+           />
+           <button type="submit" class="btn btn-info">Save fournisseur</button>
+         </form>
+       </div>
+   </div>
+ 
+ </div>
+    <!--  Fournisseur -->
+    <div class="col-md-7">
+      <table class="table table-dark table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Id du Fournisseur</td>
+            <td>Nom du Fournisseur</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (fournisseur) { %> <% for(var i = 0; i < fournisseur.length; i++) {
+          %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= fournisseur[i].id_fournisseur %></td>
+            <td><%= fournisseur[i].nom_fournisseur %></td>
+            <td class="d-flex gap-2">
+              <a href="/updateFournisseur/<%= fournisseur[i].id_fournisseur %>" class="btn btn-info">
+                Edit
+              </a>
+              <a href="/deleteFournisseur/<%= fournisseur[i].id_fournisseur %>" class="btn btn-danger">           
+                Delete
+              </a>
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <!--CREATE CHAINE-->
+        <div class="card-body">
+          <form action="/addChaine" method="POST">        
+            <input type="text" name="nom_chaine" value="<%=chaine.nom_chaine%>" placeholder="Nom de la chaine" class="form-control mb-3"/>
+            <select class="form-select mb-2" name="id_iptv">
+              <% iptv.forEach((iptv) => { %>
+              <option value="<%= iptv.id_iptv %>"><%= iptv.nom_Iptv %></option>
+              <% }); %>
+            </select>
+            <input type="text" name="url" value="<%=chaine.url%>" placeholder="Url" class="form-control mb-3"/> 
+            <input type="text" name="frame" value="<%=chaine.frame%>" placeholder="Iframe" class="form-control mb-3"/>
+            <button type="submit" class="btn btn-info">Save chaine</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-7 ">
+        <!-- CHAINES -->
+        <table class="table table-dark table-bordered table-hover">
+          <thead>
+            <tr>
+              <td>n°</td>
+              <td>Id de la Chaine</td>
+              <td>Nom de la Chaine</td>
+              <td>Id Iptv</td>
+              <td>Url</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (chaine) { %> <% for(var i = 0; i < chaine.length; i++) { %>
+            <tr>
+              <td><%= (i + 1) %></td>
+              <td><%= chaine[i].id_chaine %></td>
+              <td><%= chaine[i].nom_chaine %></td>
+              <td><%= chaine[i].id_iptv %></td>
+              <td><%= chaine[i].url %></td>
+              <td class="d-flex gap-2">
+                <a href="/updateChaine/<%= chaine[i].id_chaine %>" class="btn btn-info">Edit</a>
+                <a href="/deleteChaine/<%= chaine[i].id_chaine %>" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            <% } %> <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+   
+
+<%- include("partials/_footer") %>

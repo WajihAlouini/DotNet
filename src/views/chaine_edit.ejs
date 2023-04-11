@@ -1,0 +1,52 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/updateChaine/<%= chaine.id_chaine %>" method="POST">
+          <input
+            type="text"
+            name="id_chaine"
+            value="<%= chaine.id_chaine%>"
+            placeholder="<%= chaine.id_chaine%>"
+            class="form-control mb-3"
+            disabled
+          />
+        <input
+            type="text"
+            name="nom_chaine"
+            value="<%= chaine.nom_chaine%>"
+            placeholder="Nom de l'chaine"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="id_iptv"
+            value="<%=chaine.id_iptv%>"
+            placeholder="Duree de l'chaine"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="url"
+            value="<%=chaine.url%>"
+            placeholder="Url"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="frame"
+            value="<%=chaine.frame%>"
+            placeholder="Frame"
+            class="form-control mb-3"
+          />
+
+          <button type="submit" class="btn btn-primary">save chaine</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>
