@@ -19,11 +19,13 @@ CREATE TABLE `fournisseur` (
   PRIMARY KEY (`id_fournisseur`)
 );
 CREATE TABLE `chaine` (
-  `id_chaine` varchar(20) NOT NULL,
+  `id_chaine` varchar(20) NOT NULL AUTO_INCREMENT,
   `nom_chaine` varchar(30) NOT NULL,
   `id_iptv` varchar(30) NOT NULL,
-  `url` varchar(30) NOT NULL,
-  PRIMARY KEY (`id_chaine`)
+  `url` varchar(100) NOT NULL,
+  'frame' varchar(50) NOT NULL,
+  PRIMARY KEY (`id_chaine`),
+  
 );
 
 
