@@ -78,7 +78,7 @@ session_start ();
                   </ul>
                </li>
                <li>
-                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>Writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>type</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="BookA.php"><i class="las la-user-plus"></i>Add Book</a></li>
                         <li><a href="BookL.php"><i class="las la-eye"></i>Books List</a></li>
@@ -121,7 +121,7 @@ session_start ();
                            <li><a href="ui-carousel.html"><i class="las la-film"></i>Carousel</a></li>
                            <li><a href="ui-embed-video.html"><i class="las la-video"></i>Video</a></li>
                            <li><a href="ui-grid.html"><i class="las la-border-all"></i>Grid</a></li>
-                           <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li>
+                           <!-- <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li> -->
                            <li><a href="ui-list-group.html"><i class="las la-list"></i>list Group</a></li>
                            <li><a href="ui-media-object.html"><i class="las la-ad"></i>Media</a></li>
                            <li><a href="ui-modal.html"><i class="las la-columns"></i>Modal</a></li>
@@ -470,16 +470,14 @@ session_start ();
       <div id="content-page" class="content-page">
          <div class="container-fluid">
          <?PHP
-include "../entites/writer.php";
-include "../core/writerC.php";
+include "../entites/type.php";
+include "../core/typeC.php";
 if (isset($_GET['id'])){
-    $writerC = new writerC();
-    $result=$writerC->recuperewriter($_GET['id']);
+    $typeC = new typeC();
+    $result=$typeC->recuperetype($_GET['id']);
     foreach($result as $row){
-        $nom=$row['nom'];
-        $prenom=$row['prenom'];
-        $daten=$row['daten'];
-        $img=$row['img'];
+        $nomt=$row['nomt'];
+      
 
         
     
@@ -492,32 +490,24 @@ if (isset($_GET['id'])){
                     
                      <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                           <h4 class="card-title">Add Movie</h4>
+                           <h4 class="card-title">Add type</h4>
                         </div>
                      </div>
                      <div class="iq-card-body">
                      
 
-                     <form method="POST" action="modifierwriter.php" enctype="multipart/form-data" >
+                     <form method="POST" action="modifiertype.php" enctype="multipart/form-data" >
                            <div class="row">
                             
                               <div class="col-lg-7">
                                  <div class="row">
                                     <div class="col-12 form-group">
-                                        <caption>Modifier Actor</caption>
-                                       <input type="text" class="form-control" name="nom" value="<?PHP echo $nom ?>">
+                                        <caption>Modifier type</caption>
+                                       <input type="text" class="form-control" name="nomt" value="<?PHP echo $nomt ?>">
                                     </div>
-                                    <div class="col-12 form-group">
-                                       <input type="text" class="form-control"  name="prenom" value="<?PHP echo $prenom ?>">
-                                    </div>
-                                    <div class="col-12 form-group">
-                                       <input type="Date" class="form-control"  name="daten" value="<?PHP echo $daten ?>">
-                                    </div>
-                                    <div class="col-12 form_gallery form-group">
-                                       <label id="gallery2" for="form_gallery-upload">New image</label>
-                                       <input name="img" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $img; ?>"
-                                          type="file" accept=".png, .jpg, .jpeg">
-                                    </div>
+                                    
+                                    
+                                
                                    
                                     
                                    
@@ -526,7 +516,7 @@ if (isset($_GET['id'])){
                               <div class="col-lg-5">
                                  <div class="d-block position-relative" >
                                     <div class="form_video-upload" style= "background-color: transparent;">
-                                    <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%">
+                                    <!-- <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%"> -->
                                     </div>
                                  </div>
                               </div>

@@ -1,22 +1,23 @@
 <!doctype html>
 <html lang="en">
 <?php
+
 session_start (); 
 ?>
-    
-    
 
-<!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/add-movie.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:53 GMT -->
+
+<!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/movie-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:53 GMT -->
 <head>
    <!-- Required meta tags -->
+   <script src="https://use.fontawesome.com/f883574639.js"></script>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <title>Streamit - Responsive Bootstrap 4 Admin Dashboard Template</title>
    <!-- Favicon -->
    <link rel="shortcut icon" href="https://templates.iqonic.design/streamit/dashboard/html/assets/images/favicon.ico" />
    <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-   <!--datatable CSS -->
    <link rel="stylesheet" href="../assets/css/dataTables.bootstrap4.min.css">
    <!-- Typography CSS -->
    <link rel="stylesheet" href="../assets/css/typography.css">
@@ -71,14 +72,14 @@ session_start ();
                            class="las la-user-friends"></i><span>User</span></a>
                   </li>
                   <li>
-                  <a href="#category" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-list-ul"></i><span>Category</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                  <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                     <li><a href="add-category.html"><i class="las la-user-plus"></i>Add Category</a></li>
-                     <li><a href="category-list.html"><i class="las la-eye"></i>Category List</a></li>
-                  </ul>
-               </li>
-               <li>
-                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>Writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="#category" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-list-ul"></i><span>Category</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="add-category.html"><i class="las la-user-plus"></i>Add Category</a></li>
+                        <li><a href="category-list.html"><i class="las la-eye"></i>Category List</a></li>
+                     </ul>
+                  </li>
+                  <li class="active active-menu">
+                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="las la-film"></i><span>Movie</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="BookA.php"><i class="las la-user-plus"></i>Add Book</a></li>
                         <li><a href="BookL.php"><i class="las la-eye"></i>Books List</a></li>
@@ -88,138 +89,137 @@ session_start ();
                         <li><a href="type-list.php"><i class="las la-eye"></i>Type List</a></li>
                      </ul>
                   </li>
-               <li>
-                  <a href="#show" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
-                     class="las la-film"></i><span>Show</span><i
-                     class="ri-arrow-right-s-line iq-arrow-right"></i>
-                  </a>
-                  <ul id="show" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                     <li><a href="add-show.html"><i class="las la-user-plus"></i>Add Show</a></li>
-                     <li><a href="show-list.html"><i class="las la-eye"></i>Show List</a></li>
-                  </ul>
-               </li>
-               <li><a href="pages-pricing.html" class="iq-waves-effect"><i class="ri-price-tag-line"></i>
-                  <span>Pricing</span></a>
-               </li>
-               <li>
-                  <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse"
-                     aria-expanded="false"><i class="lab la-elementor iq-arrow-left"></i><span>UI Elements</span><i
-                        class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                  <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                     <li class="elements">
-                        <a href="#sub-menu" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-play-circle-line"></i><span>UI Kit</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="sub-menu" class="iq-submenu collapse" data-parent="#ui-elements">
-                           <li><a href="ui-colors.html"><i class="las la-palette"></i>colors</a></li>
-                           <li><a href="ui-typography.html"><i class="las la-keyboard"></i>Typography</a></li>
-                           <li><a href="ui-alerts.html"><i class="las la-tag"></i>Alerts</a></li>
-                           <li><a href="ui-badges.html"><i class="lab la-atlassian"></i>Badges</a></li>
-                           <li><a href="ui-breadcrumb.html"><i class="las la-bars"></i>Breadcrumb</a></li>
-                           <li><a href="ui-buttons.html"><i class="las la-tablet"></i>Buttons</a></li>
-                           <li><a href="ui-cards.html"><i class="las la-credit-card"></i>Cards</a></li>
-                           <li><a href="ui-carousel.html"><i class="las la-film"></i>Carousel</a></li>
-                           <li><a href="ui-embed-video.html"><i class="las la-video"></i>Video</a></li>
-                           <li><a href="ui-grid.html"><i class="las la-border-all"></i>Grid</a></li>
-                           <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li>
-                           <li><a href="ui-list-group.html"><i class="las la-list"></i>list Group</a></li>
-                           <li><a href="ui-media-object.html"><i class="las la-ad"></i>Media</a></li>
-                           <li><a href="ui-modal.html"><i class="las la-columns"></i>Modal</a></li>
-                           <li><a href="ui-notifications.html"><i class="las la-bell"></i>Notifications</a></li>
-                           <li><a href="ui-pagination.html"><i class="las la-ellipsis-h"></i>Pagination</a></li>
-                           <li><a href="ui-popovers.html"><i class="las la-eraser"></i>Popovers</a></li>
-                           <li><a href="ui-progressbars.html"><i class="las la-hdd"></i>Progressbars</a></li>
-                           <li><a href="ui-tabs.html"><i class="las la-database"></i>Tabs</a></li>
-                           <li><a href="ui-tooltips.html"><i class="las la-magnet"></i>Tooltips</a></li>
-                        </ul>
-                     </li>
-                     <li class="form">
-                        <a href="#forms" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="lab la-wpforms"></i><span>Forms</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="forms" class="iq-submenu collapse" data-parent="#ui-elements">
-                           <li><a href="form-layout.html"><i class="las la-book"></i>Form Elements</a></li>
-                           <li><a href="form-validation.html"><i class="las la-edit"></i>Form Validation</a></li>
-                           <li><a href="form-switch.html"><i class="las la-toggle-off"></i>Form Switch</a></li>
-                           <li><a href="form-chechbox.html"><i class="las la-check-square"></i>Form Checkbox</a></li>
-                           <li><a href="form-radio.html"><i class="ri-radio-button-line"></i>Form Radio</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="#wizard-form" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-archive-drawer-line"></i><span>Forms Wizard</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="wizard-form" class="iq-submenu collapse" data-parent="#ui-elements">
-                           <li><a href="form-wizard.html"><i class="ri-clockwise-line"></i>Simple Wizard</a></li>
-                           <li><a href="form-wizard-validate.html"><i class="ri-clockwise-2-line"></i>Validate
-                                 Wizard</a></li>
-                           <li><a href="form-wizard-vertical.html"><i class="ri-anticlockwise-line"></i>Vertical
-                                 Wizard</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="#tables" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-table-line"></i><span>Table</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="tables" class="iq-submenu collapse" data-parent="#ui-elements">
-                           <li><a href="tables-basic.html"><i class="ri-table-line"></i>Basic Tables</a></li>
-                           <li><a href="data-table.html"><i class="ri-database-line"></i>Data Table</a></li>
-                           <li><a href="table-editable.html"><i class="ri-refund-line"></i>Editable Table</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="#icons" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-list-check"></i><span>Icons</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="icons" class="iq-submenu collapse" data-parent="#ui-elements">
-                           <li><a href="icon-dripicons.html"><i class="ri-stack-line"></i>Dripicons</a></li>
-                           <li><a href="icon-fontawesome-5.html"><i class="ri-facebook-fill"></i>Font Awesome 5</a>
-                           </li>
-                           <li><a href="icon-lineawesome.html"><i class="ri-keynote-line"></i>line Awesome</a></li>
-                           <li><a href="icon-remixicon.html"><i class="ri-remixicon-line"></i>Remixicon</a></li>
-                           <li><a href="icon-unicons.html"><i class="ri-underline"></i>unicons</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </li>
-               <li>
-                  <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
-                        class="las la-file-alt iq-arrow-left"></i><span>Pages</span><i
-                        class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                  <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                     <li>
-                        <a href="#authentication" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
-                           <li><a href="sign-in.html"><i class="las la-sign-in-alt"></i>Login</a></li>
-                           <li><a href="sign-up.html"><i class="ri-login-circle-line"></i>Register</a></li>
-                           <li><a href="pages-recoverpw.html"><i class="ri-record-mail-line"></i>Recover Password</a>
-                           </li>
-                           <li><a href="pages-confirm-mail.html"><i class="ri-file-code-line"></i>Confirm Mail</a>
-                           </li>
-                           <li><a href="pages-lock-screen.html"><i class="ri-lock-line"></i>Lock Screen</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse"
-                           aria-expanded="false"><i class="ri-pantone-line"></i><span>Extra Pages</span><i
-                              class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="extra-pages" class="iq-submenu collapse" data-parent="#pages">
-                           <li><a href="pages-timeline.html"><i class="ri-map-pin-time-line"></i>Timeline</a></li>
-                           <li><a href="pages-invoice.html"><i class="ri-question-answer-line"></i>Invoice</a></li>
-                           <li><a href="blank-page.html"><i class="ri-invision-line"></i>Blank Page</a></li>
-                           <li><a href="pages-error.html"><i class="ri-error-warning-line"></i>Error 404</a></li>
-                           <li><a href="pages-error-500.html"><i class="ri-error-warning-line"></i>Error 500</a></li>
-                           
-                           <li><a href="pages-maintenance.html"><i class="ri-archive-line"></i>Maintenance</a></li>
-                           <li><a href="pages-comingsoon.html"><i class="ri-mastercard-line"></i>Coming Soon</a></li>
-                           <li><a href="pages-faq.html"><i class="ri-compasses-line"></i>Faq</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </li>
-            </ul>
+                  <li>
+                     <a href="#show" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
+                        class="las la-film"></i><span>Show</span><i
+                        class="ri-arrow-right-s-line iq-arrow-right"></i>
+                     </a>
+                     <ul id="show" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li><a href="add-show.html"><i class="las la-user-plus"></i>Add Show</a></li>
+                        <li><a href="show-list.html"><i class="las la-eye"></i>Show List</a></li>
+                     </ul>
+                  </li>
+                  <li><a href="pages-pricing.html" class="iq-waves-effect"><i class="ri-price-tag-line"></i><span>Pricing</span></a>
+                  </li>                  
+                  <li>
+                     <a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse"
+                        aria-expanded="false"><i class="lab la-elementor iq-arrow-left"></i><span>UI Elements</span><i
+                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="elements">
+                           <a href="#sub-menu" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-play-circle-line"></i><span>UI Kit</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="sub-menu" class="iq-submenu collapse" data-parent="#ui-elements">
+                              <li><a href="ui-colors.html"><i class="las la-palette"></i>colors</a></li>
+                              <li><a href="ui-typography.html"><i class="las la-keyboard"></i>Typography</a></li>
+                              <li><a href="ui-alerts.html"><i class="las la-tag"></i>Alerts</a></li>
+                              <li><a href="ui-badges.html"><i class="lab la-atlassian"></i>Badges</a></li>
+                              <li><a href="ui-breadcrumb.html"><i class="las la-bars"></i>Breadcrumb</a></li>
+                              <li><a href="ui-buttons.html"><i class="las la-tablet"></i>Buttons</a></li>
+                              <li><a href="ui-cards.html"><i class="las la-credit-card"></i>Cards</a></li>
+                              <li><a href="ui-carousel.html"><i class="las la-film"></i>Carousel</a></li>
+                              <li><a href="ui-embed-video.html"><i class="las la-video"></i>Video</a></li>
+                              <li><a href="ui-grid.html"><i class="las la-border-all"></i>Grid</a></li>
+                              <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li>
+                              <li><a href="ui-list-group.html"><i class="las la-list"></i>list Group</a></li>
+                              <li><a href="ui-media-object.html"><i class="las la-ad"></i>Media</a></li>
+                              <li><a href="ui-modal.html"><i class="las la-columns"></i>Modal</a></li>
+                              <li><a href="ui-notifications.html"><i class="las la-bell"></i>Notifications</a></li>
+                              <li><a href="ui-pagination.html"><i class="las la-ellipsis-h"></i>Pagination</a></li>
+                              <li><a href="ui-popovers.html"><i class="las la-eraser"></i>Popovers</a></li>
+                              <li><a href="ui-progressbars.html"><i class="las la-hdd"></i>Progressbars</a></li>
+                              <li><a href="ui-tabs.html"><i class="las la-database"></i>Tabs</a></li>
+                              <li><a href="ui-tooltips.html"><i class="las la-magnet"></i>Tooltips</a></li>
+                           </ul>
+                        </li>
+                        <li class="form">
+                           <a href="#forms" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="lab la-wpforms"></i><span>Forms</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="forms" class="iq-submenu collapse" data-parent="#ui-elements">
+                              <li><a href="form-layout.html"><i class="las la-book"></i>Form Elements</a></li>
+                              <li><a href="form-validation.html"><i class="las la-edit"></i>Form Validation</a></li>
+                              <li><a href="form-switch.html"><i class="las la-toggle-off"></i>Form Switch</a></li>
+                              <li><a href="form-chechbox.html"><i class="las la-check-square"></i>Form Checkbox</a></li>
+                              <li><a href="form-radio.html"><i class="ri-radio-button-line"></i>Form Radio</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a href="#wizard-form" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-archive-drawer-line"></i><span>Forms Wizard</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="wizard-form" class="iq-submenu collapse" data-parent="#ui-elements">
+                              <li><a href="form-wizard.html"><i class="ri-clockwise-line"></i>Simple Wizard</a></li>
+                              <li><a href="form-wizard-validate.html"><i class="ri-clockwise-2-line"></i>Validate
+                                    Wizard</a></li>
+                              <li><a href="form-wizard-vertical.html"><i class="ri-anticlockwise-line"></i>Vertical
+                                    Wizard</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a href="#tables" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-table-line"></i><span>Table</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="tables" class="iq-submenu collapse" data-parent="#ui-elements">
+                              <li><a href="tables-basic.html"><i class="ri-table-line"></i>Basic Tables</a></li>
+                              <li><a href="data-table.html"><i class="ri-database-line"></i>Data Table</a></li>
+                              <li><a href="table-editable.html"><i class="ri-refund-line"></i>Editable Table</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a href="#icons" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-list-check"></i><span>Icons</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="icons" class="iq-submenu collapse" data-parent="#ui-elements">
+                              <li><a href="icon-dripicons.html"><i class="ri-stack-line"></i>Dripicons</a></li>
+                              <li><a href="icon-fontawesome-5.html"><i class="ri-facebook-fill"></i>Font Awesome 5</a>
+                              </li>
+                              <li><a href="icon-lineawesome.html"><i class="ri-keynote-line"></i>line Awesome</a></li>
+                              <li><a href="icon-remixicon.html"><i class="ri-remixicon-line"></i>Remixicon</a></li>
+                              <li><a href="icon-unicons.html"><i class="ri-underline"></i>unicons</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li>
+                     <a href="#pages" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
+                           class="las la-file-alt iq-arrow-left"></i><span>Pages</span><i
+                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <ul id="pages" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li>
+                           <a href="#authentication" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-pages-line"></i><span>Authentication</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="authentication" class="iq-submenu collapse" data-parent="#pages">
+                              <li><a href="sign-in.html"><i class="las la-sign-in-alt"></i>Login</a></li>
+                              <li><a href="sign-up.html"><i class="ri-login-circle-line"></i>Register</a></li>
+                              <li><a href="pages-recoverpw.html"><i class="ri-record-mail-line"></i>Recover Password</a>
+                              </li>
+                              <li><a href="pages-confirm-mail.html"><i class="ri-file-code-line"></i>Confirm Mail</a>
+                              </li>
+                              <li><a href="pages-lock-screen.html"><i class="ri-lock-line"></i>Lock Screen</a></li>
+                           </ul>
+                        </li>
+                        <li>
+                           <a href="#extra-pages" class="iq-waves-effect collapsed" data-toggle="collapse"
+                              aria-expanded="false"><i class="ri-pantone-line"></i><span>Extra Pages</span><i
+                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                           <ul id="extra-pages" class="iq-submenu collapse" data-parent="#pages">
+                              <li><a href="pages-timeline.html"><i class="ri-map-pin-time-line"></i>Timeline</a></li>
+                              <li><a href="pages-invoice.html"><i class="ri-question-answer-line"></i>Invoice</a></li>
+                              <li><a href="blank-page.html"><i class="ri-invision-line"></i>Blank Page</a></li>
+                              <li><a href="pages-error.html"><i class="ri-error-warning-line"></i>Error 404</a></li>
+                              <li><a href="pages-error-500.html"><i class="ri-error-warning-line"></i>Error 500</a></li>
+                              
+                              <li><a href="pages-maintenance.html"><i class="ri-archive-line"></i>Maintenance</a></li>
+                              <li><a href="pages-comingsoon.html"><i class="ri-mastercard-line"></i>Coming Soon</a></li>
+                              <li><a href="pages-faq.html"><i class="ri-compasses-line"></i>Faq</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
             </nav>
          </div>
       </div>
@@ -466,104 +466,125 @@ session_start ();
       </div>
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
-   
       <div id="content-page" class="content-page">
          <div class="container-fluid">
-         <?PHP
-include "../entites/writer.php";
-include "../core/writerC.php";
-if (isset($_GET['id'])){
-    $writerC = new writerC();
-    $result=$writerC->recuperewriter($_GET['id']);
-    foreach($result as $row){
-        $nom=$row['nom'];
-        $prenom=$row['prenom'];
-        $daten=$row['daten'];
-        $img=$row['img'];
-
-        
-    
-?>
             <div class="row">
-   
                <div class="col-sm-12">
-
+             
                   <div class="iq-card">
-                    
                      <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                           <h4 class="card-title">Add Movie</h4>
+                           <h4 class="card-title">Books Lists</h4>
+                        </div>
+                        <div class="iq-card-header-toolbar d-flex align-items-center">
+                           <a href="BookA.php" class="btn btn-primary">Add Book</a>
                         </div>
                      </div>
                      <div class="iq-card-body">
+
+
+
+
                      
-
-                     <form method="POST" action="modifierwriter.php" enctype="multipart/form-data" >
-                           <div class="row">
-                            
-                              <div class="col-lg-7">
-                                 <div class="row">
-                                    <div class="col-12 form-group">
-                                        <caption>Modifier Actor</caption>
-                                       <input type="text" class="form-control" name="nom" value="<?PHP echo $nom ?>">
-                                    </div>
-                                    <div class="col-12 form-group">
-                                       <input type="text" class="form-control"  name="prenom" value="<?PHP echo $prenom ?>">
-                                    </div>
-                                    <div class="col-12 form-group">
-                                       <input type="Date" class="form-control"  name="daten" value="<?PHP echo $daten ?>">
-                                    </div>
-                                    <div class="col-12 form_gallery form-group">
-                                       <label id="gallery2" for="form_gallery-upload">New image</label>
-                                       <input name="img" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $img; ?>"
-                                          type="file" accept=".png, .jpg, .jpeg">
-                                    </div>
-                                   
-                                    
-                                   
-                                 </div>
-                              </div>
-                              <div class="col-lg-5">
-                                 <div class="d-block position-relative" >
-                                    <div class="form_video-upload" style= "background-color: transparent;">
-                                    <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%">
-                                    </div>
-                                 </div>
-                              </div>
-                              
-                            
-                           </div>
-                           <div class="row">
-                              
-                              
-                              
-                              <div class="col-12 form-group ">
-                                 <button type="submit" name="modifier" value="modifier">edit</button>
-                                 <input type="hidden" name="id" value="<?PHP echo $_GET['id'];?>">
-                                 
-                              </div>
-                           </div>
+                     <?php
+                        include "../core/booksC.php";
+                        $movie1C=new BooksC();
+                        $listemovie=$movie1C-> Afficherbook();
                         
-
-
-
-                        </form>
+                    
+                        ?>
                        
+                           <table class="data-tables table movie_table " style="width:100%">
+                              <thead>
+                                 <tr>
+                                    <th>Image & Nom</th>
+                                    <th>Description</th>
+                                    <th>Movie Url</th>
+                                    <th>Duration</th>
+                                   
+                                 
+                                    
+                                 
+                                    
+                                 </tr>
+                              </thead>
+                              <?PHP
+
+
+foreach($listemovie as $row)
+{
+?>
+                              <tbody>
+                                 <tr>
+                                    <td>
+                                       <div class="media align-items-center">
+                                          <div class="iq-movie">
+                                             <a href="javascript:void(0);"><img
+                                                   src="uploads/<?php echo $row['imgB'];?>"
+                                                   class="img-border-radius avatar-40 img-fluid" alt=""></a>
+                                          </div>
+                                          <div class="media-body text-white text-left ml-3">
+                                             <p class="mb-0"><?PHP echo $row['nomB']; ?></p>
+                                             <small><?PHP echo $row['type_name']; ?></small>
+                                          </div>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       <p><?PHP echo $row['DescB']; ?>
+                                       </p>
+                                    </td>
+                                    
+                                    <td>
+                                       <p><?PHP echo $row['UrlB']; ?>
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <p><?PHP echo $row['duree']; ?> min
+                                       </p>
+                                    </td>
+                                    <td>
+                                       <div class="flex align-items-center list-user-action">
+                                          <a class="iq-bg-warning" data-toggle="tooltip" data-placement="top" title=""
+                                             data-original-title="View" href="#"><i class="fa-solid fa-eye"></i></a>
+                                          <a class="iq-bg-success" data-toggle="tooltip" data-placement="top" title=""
+                                             data-original-title="Edit" href="booksupd.php?id=<?PHP echo $row['id']; ?>"><i class="ri-pencil-line"></i></a>
+                                          
+                                             
+                                             
+                                             <a class="iq-bg-primary" data-toggle="tooltip" data-placement="top" title="Delete" href="#" onclick="submitForm()">
+    <i class="ri-delete-bin-line"></i>
+    <form id="deleteForm_<?php echo $row['id']; ?>" method="POST" action="deletebook.php">
+        <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
+    </form>
+</a>
+
+<script>
+function submitForm() {
+    document.getElementById('deleteForm_<?php echo $row['id']; ?>').submit();
+}
+</script>
+
+                                                
+                                            
+                                                
+                                       </div>
+                                       
+                                    </td>
+                                 </tr>
+                                
+                              </tbody>
+                              <?PHP
+}
+?>
+                           </table>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
-            <?PHP
-    }
-}
-
-
-?>
          </div>
       </div>
    </div>
-
-
    <!-- Wrapper END -->
    <div class="rtl-box">
    <button type="button" class="btn btn-light rtl-btn">
@@ -600,6 +621,8 @@ if (isset($_GET['id'])){
    <script src="../assets/js/jquery.min.js"></script>
    <script src="../assets/js/popper.min.js"></script>
    <script src="../assets/js/bootstrap.min.js"></script>
+   <script src="../assets/js/jquery.dataTables.min.js"></script>
+   <script src="../assets/js/dataTables.bootstrap4.min.js"></script>
    <!-- Appear JavaScript -->
    <script src="../assets/js/jquery.appear.js"></script>
    <!-- Countdown JavaScript -->
@@ -609,8 +632,6 @@ if (isset($_GET['id'])){
    <script src="../assets/js/jquery.counterup.min.js"></script>
    <!-- Wow JavaScript -->
    <script src="../assets/js/wow.min.js"></script>
-   <!-- Select2 JavaScript -->
-   <script src="../assets/js/select2.min.js"></script>
    <!-- Slick JavaScript -->
    <script src="../assets/js/slick.min.js"></script>
    <!-- Owl Carousel JavaScript -->
@@ -627,5 +648,5 @@ if (isset($_GET['id'])){
 </body>
 
 
-<!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/add-movie.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:53 GMT -->
+<!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/movie-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:56 GMT -->
 </html>

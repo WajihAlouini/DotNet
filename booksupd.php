@@ -77,9 +77,9 @@ session_start ();
                      <li><a href="category-list.html"><i class="las la-eye"></i>Category List</a></li>
                   </ul>
                </li>
-               <li>
-                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>Writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+               <li class="active active-menu">
+                  <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="las la-film"></i><span>Movie</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                  <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="BookA.php"><i class="las la-user-plus"></i>Add Book</a></li>
                         <li><a href="BookL.php"><i class="las la-eye"></i>Books List</a></li>
                         <li><a href="add-movie.php"><i class="las la-user-plus"></i>Add Writer</a></li>
@@ -87,7 +87,7 @@ session_start ();
                         <li><a href="add-type.php"><i class="las la-user-plus"></i>Add Type</a></li>
                         <li><a href="type-list.php"><i class="las la-eye"></i>Type List</a></li>
                      </ul>
-                  </li>
+               </li>
                <li>
                   <a href="#show" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
                      class="las la-film"></i><span>Show</span><i
@@ -470,16 +470,26 @@ session_start ();
       <div id="content-page" class="content-page">
          <div class="container-fluid">
          <?PHP
-include "../entites/writer.php";
-include "../core/writerC.php";
+include "../entites/books.php";
+include "../core/booksC.php";
+
+$movie1C=new BooksC();
+$listemovie=$movie1C-> AfficherWriters();
+$listegenre=$movie1C-> Affichertypes();
+
 if (isset($_GET['id'])){
-    $writerC = new writerC();
-    $result=$writerC->recuperewriter($_GET['id']);
+    $BooksC = new BooksC();
+    $result=$BooksC->recuperbook($_GET['id']);
     foreach($result as $row){
-        $nom=$row['nom'];
-        $prenom=$row['prenom'];
-        $daten=$row['daten'];
-        $img=$row['img'];
+        $nomB=$row['nomB'];
+        $DescB=$row['DescB'];
+        $UrlB=$row['UrlB'];
+        $duree=$row['duree'];
+        $Released=$row['Released'];
+        $imgB=$row['imgB'];
+        $writer_id=$row['writer_name'];
+        $types_id=$row['type_name'];
+       
 
         
     
@@ -492,30 +502,71 @@ if (isset($_GET['id'])){
                     
                      <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                           <h4 class="card-title">Add Movie</h4>
+                           <h4 class="card-title">Add Book</h4>
                         </div>
                      </div>
                      <div class="iq-card-body">
                      
 
-                     <form method="POST" action="modifierwriter.php" enctype="multipart/form-data" >
+                     <form method="POST" action="Bookup.php" enctype="multipart/form-data" >
                            <div class="row">
                             
                               <div class="col-lg-7">
                                  <div class="row">
                                     <div class="col-12 form-group">
-                                        <caption>Modifier Actor</caption>
-                                       <input type="text" class="form-control" name="nom" value="<?PHP echo $nom ?>">
+                                        <caption>Modifier Book</caption>
+                                       <input type="text" class="form-control" name="nomB" value="<?PHP echo $nomB ?>">
                                     </div>
                                     <div class="col-12 form-group">
-                                       <input type="text" class="form-control"  name="prenom" value="<?PHP echo $prenom ?>">
+                                       <input type="text" class="form-control"  name="DescB" value="<?PHP echo $DescB ?>">
+                                    </div>
+                                   
+                                    <div class="col-12 form-group">
+                                       <input type="text" class="form-control"  name="UrlB" value="<?PHP echo $UrlB ?>">
                                     </div>
                                     <div class="col-12 form-group">
-                                       <input type="Date" class="form-control"  name="daten" value="<?PHP echo $daten ?>">
+                                       <input type="text" class="form-control"  name="duree" value="<?PHP echo $duree ?>">
                                     </div>
+                                    <div class="col-12 form-group">
+                                       <input type="Date" class="form-control"  name="Released" value="<?PHP echo $Released ?>">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                       
+                                       <select class="form-control" name="writer_id" id="writer_actor">
+                                             <option value="<?PHP echo $writer_id ?>"><?PHP echo $writer_id ?></option>
+                                             <?PHP
+
+
+foreach($listemovie as $rows)
+{
+?>
+                                             <option value="<?PHP echo $rows['id']; ?>" ><?PHP echo $rows['nom']; ?></option>
+                                             <?PHP
+}
+?>
+
+                                                </select>
+                              </div>
+                              <div class="col-12 form-group">
+                                         
+                                         <select class="form-control" name="types_id" id="genre">
+                                               <option value="<?PHP echo $types_id ?>"><?PHP echo $types_id ?></option>
+                                               <?PHP
+
+
+foreach($listegenre as $rowss)
+{
+?>
+                                               <option value="<?PHP echo $rowss['id']; ?>"><?PHP echo $rowss['nomt']; ?></option>
+                                         
+                                               <?PHP
+}
+?>
+                                                  </select>
+                                </div>
                                     <div class="col-12 form_gallery form-group">
                                        <label id="gallery2" for="form_gallery-upload">New image</label>
-                                       <input name="img" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $img; ?>"
+                                       <input name="imgB" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $imgB; ?>"
                                           type="file" accept=".png, .jpg, .jpeg">
                                     </div>
                                    
@@ -526,7 +577,7 @@ if (isset($_GET['id'])){
                               <div class="col-lg-5">
                                  <div class="d-block position-relative" >
                                     <div class="form_video-upload" style= "background-color: transparent;">
-                                    <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%">
+                                    <img src="uploads/<?php echo $row['imgB'];?>"   style="width: 55%">
                                     </div>
                                  </div>
                               </div>

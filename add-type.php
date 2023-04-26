@@ -3,8 +3,37 @@
 <?php
 session_start (); 
 ?>
-    
-    
+<style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var nomt = document.forms["myForm"]["nomt"].value;
+       
+            
+            var errorMessages = document.getElementsByClassName("error-message");
+        while (errorMessages.length > 0) {
+            errorMessages[0].parentNode.removeChild(errorMessages[0]);
+        }
+
+
+
+            if (nomt == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.innerHTML = "Le champ nom est obligatoire.";
+            document.getElementsByName("nomt")[0].parentNode.appendChild(errorMessage);
+        }
+        
+        if (nomt == "") {
+            return false;
+        }
+    }
+</script>
 
 <!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/add-movie.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:53 GMT -->
 <head>
@@ -78,7 +107,7 @@ session_start ();
                   </ul>
                </li>
                <li>
-                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>Writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="BookA.php"><i class="las la-user-plus"></i>Add Book</a></li>
                         <li><a href="BookL.php"><i class="las la-eye"></i>Books List</a></li>
@@ -121,7 +150,7 @@ session_start ();
                            <li><a href="ui-carousel.html"><i class="las la-film"></i>Carousel</a></li>
                            <li><a href="ui-embed-video.html"><i class="las la-video"></i>Video</a></li>
                            <li><a href="ui-grid.html"><i class="las la-border-all"></i>Grid</a></li>
-                           <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li>
+                           <!-- <li><a href="ui-images.html"><i class="las la-images"></i>Images</a></li> -->
                            <li><a href="ui-list-group.html"><i class="las la-list"></i>list Group</a></li>
                            <li><a href="ui-media-object.html"><i class="las la-ad"></i>Media</a></li>
                            <li><a href="ui-modal.html"><i class="las la-columns"></i>Modal</a></li>
@@ -466,103 +495,50 @@ session_start ();
       </div>
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
-   
       <div id="content-page" class="content-page">
          <div class="container-fluid">
-         <?PHP
-include "../entites/writer.php";
-include "../core/writerC.php";
-if (isset($_GET['id'])){
-    $writerC = new writerC();
-    $result=$writerC->recuperewriter($_GET['id']);
-    foreach($result as $row){
-        $nom=$row['nom'];
-        $prenom=$row['prenom'];
-        $daten=$row['daten'];
-        $img=$row['img'];
-
-        
-    
-?>
             <div class="row">
-   
                <div class="col-sm-12">
-
                   <div class="iq-card">
-                    
                      <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                           <h4 class="card-title">Add Movie</h4>
+                           <h4 class="card-title">Add type</h4>
                         </div>
                      </div>
                      <div class="iq-card-body">
-                     
-
-                     <form method="POST" action="modifierwriter.php" enctype="multipart/form-data" >
+                     <form method="POST" action="ajoutype.php" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
+        <table id="example1" class="table table-striped">
                            <div class="row">
-                            
                               <div class="col-lg-7">
                                  <div class="row">
                                     <div class="col-12 form-group">
-                                        <caption>Modifier Actor</caption>
-                                       <input type="text" class="form-control" name="nom" value="<?PHP echo $nom ?>">
+                                       <input type="text" class="form-control" placeholder="Name" name="nomt">
                                     </div>
-                                    <div class="col-12 form-group">
-                                       <input type="text" class="form-control"  name="prenom" value="<?PHP echo $prenom ?>">
-                                    </div>
-                                    <div class="col-12 form-group">
-                                       <input type="Date" class="form-control"  name="daten" value="<?PHP echo $daten ?>">
-                                    </div>
-                                    <div class="col-12 form_gallery form-group">
-                                       <label id="gallery2" for="form_gallery-upload">New image</label>
-                                       <input name="img" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $img; ?>"
-                                          type="file" accept=".png, .jpg, .jpeg">
-                                    </div>
-                                   
+                                    
+                                    
                                     
                                    
+                                  
+                                    
                                  </div>
                               </div>
-                              <div class="col-lg-5">
-                                 <div class="d-block position-relative" >
-                                    <div class="form_video-upload" style= "background-color: transparent;">
-                                    <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%">
-                                    </div>
-                                 </div>
-                              </div>
-                              
-                            
+                         
                            </div>
                            <div class="row">
-                              
-                              
-                              
+                          
                               <div class="col-12 form-group ">
-                                 <button type="submit" name="modifier" value="modifier">edit</button>
-                                 <input type="hidden" name="id" value="<?PHP echo $_GET['id'];?>">
+                                 <button type="submit" value="ajouter" class="btn btn-primary">Submit</button>
                                  
                               </div>
                            </div>
-                        
-
-
-
                         </form>
-                       
                      </div>
                   </div>
                </div>
             </div>
-            <?PHP
-    }
-}
-
-
-?>
          </div>
       </div>
    </div>
-
 
    <!-- Wrapper END -->
    <div class="rtl-box">

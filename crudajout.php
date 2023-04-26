@@ -1,6 +1,7 @@
 <?php
-include "./entities/writer.php";
-include "./Core/writerC.php";
+
+include "../entites/writer.php";
+include "../core/writerC.php";
 
 if (isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['daten']) and isset($_FILES['img'])) {
     $writer = new writer($_POST['nom'],$_POST['prenom'],$_POST['daten'],$_FILES['img']['name']);
@@ -18,9 +19,10 @@ if (isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['daten']) 
         // There was an error uploading the file
         echo "Error uploading file.";
     }
-    header('Location: video-load-more.php');
+    header('Location: movie-list.php');
 } else {
     echo "Verify all fields are filled";
 
 }
+
 ?>

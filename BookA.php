@@ -3,11 +3,72 @@
 <?php
 session_start (); 
 ?>
-    
-    
+
 
 <!-- Mirrored from templates.iqonic.design/streamit/dashboard/html/theme/add-movie.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Apr 2023 15:49:53 GMT -->
 <head>
+<style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+    
+    <!-- <script> -->
+        <!-- function validateForm() {
+
+            var nomB = document.forms["myForm"]["nomB"].value;
+            var DescB = document.forms["myForm"]["DescB"].value;
+            var UrlB = document.forms["myForm"]["UrlB"].value;
+            var duree = document.forms["myForm"]["duree"].value;
+            var Released = document.forms["myForm"]["Released"].value;
+            var imgB = document.forms["myForm"]["imgB"].value;
+            
+            var errorMessages = document.getElementsByClassName("error-message");
+        while (errorMessages.length > 0) {
+            errorMessages[0].parentNode.removeChild(errorMessages[0]);
+        }
+
+
+
+            if (nomB == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.innerHTML = "Le champ nom est obligatoire.";
+            document.getElementsByName("nomB")[0].parentNode.appendChild(errorMessage);
+        }
+        if (DescB == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.innerHTML = "Le champ prénom est obligatoire.";
+            document.getElementsByName("DescB")[0].parentNode.appendChild(errorMessage);
+        }
+        if (UrlB == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.innerHTML = "Le champ date de naissance est obligatoire.";
+            document.getElementsByName("UrlB")[0].parentNode.appendChild(errorMessage);
+        }
+        if (Released == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.className = "error-message";
+            errorMessage.innerHTML = "Le champ image est obligatoire.";
+            document.getElementsByName("Released")[0].parentNode.appendChild(errorMessage);
+        }
+        if (imgB == "") {
+            var errorMessage = document.createElement("div");
+            errorMessage.clReleasedassName = "error-message";
+            errorMessage.innerHTML = "Le champ image est obligatoire.";
+            document.getElementsByName("imgB")[0].parentNode.appendChild(errorMessage);
+        }
+
+        if (nomB == "" || DescB == "" || UrlB == "" || Released == "" || imgB == "" ) {
+            return false;
+        }
+    } -->
+<!-- </script> -->
+
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,9 +138,9 @@ session_start ();
                      <li><a href="category-list.html"><i class="las la-eye"></i>Category List</a></li>
                   </ul>
                </li>
-               <li>
-                     <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="las la-film"></i><span>Writer</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+               <li class="active active-menu">
+                  <a href="#movie" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="true"><i class="las la-film"></i><span>Movie</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                  <ul id="movie" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li><a href="BookA.php"><i class="las la-user-plus"></i>Add Book</a></li>
                         <li><a href="BookL.php"><i class="las la-eye"></i>Books List</a></li>
                         <li><a href="add-movie.php"><i class="las la-user-plus"></i>Add Writer</a></li>
@@ -87,7 +148,7 @@ session_start ();
                         <li><a href="add-type.php"><i class="las la-user-plus"></i>Add Type</a></li>
                         <li><a href="type-list.php"><i class="las la-eye"></i>Type List</a></li>
                      </ul>
-                  </li>
+               </li>
                <li>
                   <a href="#show" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i
                      class="las la-film"></i><span>Show</span><i
@@ -466,56 +527,87 @@ session_start ();
       </div>
       <!-- TOP Nav Bar END -->
       <!-- Page Content  -->
-   
       <div id="content-page" class="content-page">
          <div class="container-fluid">
-         <?PHP
-include "../entites/writer.php";
-include "../core/writerC.php";
-if (isset($_GET['id'])){
-    $writerC = new writerC();
-    $result=$writerC->recuperewriter($_GET['id']);
-    foreach($result as $row){
-        $nom=$row['nom'];
-        $prenom=$row['prenom'];
-        $daten=$row['daten'];
-        $img=$row['img'];
-
-        
-    
-?>
             <div class="row">
-   
                <div class="col-sm-12">
-
                   <div class="iq-card">
-                    
                      <div class="iq-card-header d-flex justify-content-between">
                         <div class="iq-header-title">
-                           <h4 class="card-title">Add Movie</h4>
+                           <h4 class="card-title">Add Books</h4>
                         </div>
                      </div>
-                     <div class="iq-card-body">
-                     
 
-                     <form method="POST" action="modifierwriter.php" enctype="multipart/form-data" >
+                     <?php
+                        include "../core/booksC.php";
+                       
+                        $Book1C=new BooksC();
+                        $listemovie=$Book1C-> AfficherWriters();
+                        $listetypes=$Book1C-> Affichertypes();
+                        
+                    
+                        ?>
+                     <div class="iq-card-body">
+                     <form method="POST" action="addbook.php" enctype="multipart/form-data" name="myForm" >
                            <div class="row">
-                            
-                              <div class="col-lg-7">
+                              <div class="col-lg-7">   
                                  <div class="row">
                                     <div class="col-12 form-group">
-                                        <caption>Modifier Actor</caption>
-                                       <input type="text" class="form-control" name="nom" value="<?PHP echo $nom ?>">
+                                       <input type="text" class="form-control" placeholder="Name Book" name="nomB">
                                     </div>
                                     <div class="col-12 form-group">
-                                       <input type="text" class="form-control"  name="prenom" value="<?PHP echo $prenom ?>">
+                                       <input type="text" class="form-control" placeholder="Description Book " name="DescB">
+                                    </div>
+                                   
+                                    <div class="col-12 form-group">
+                                       <input type="text" class="form-control" placeholder="Url Book" name="UrlB">
                                     </div>
                                     <div class="col-12 form-group">
-                                       <input type="Date" class="form-control"  name="daten" value="<?PHP echo $daten ?>">
+                                       <input type="text" class="form-control" placeholder="duration in minute " name="duree">
                                     </div>
+                                    <div class="col-12 form-group">
+                                       <input type="date" class="form-control" placeholder="Date Realesed" name="Released">
+                                    </div>
+                                    
+                                    <div class="col-12 form-group">
+                                       
+                                             <select class="form-control" name=" writer_id" id=" writer_id">
+                                                   <option >Select Writer</option>
+                                                   <?PHP
+
+
+foreach($listemovie as $row)
+{
+?>
+                                                   <option value="<?PHP echo $row['id']; ?>" ><?PHP echo $row['nom']; ?></option>
+                                                   <?PHP
+}
+?>
+      
+                                                      </select>
+                                    </div>
+ 
+                                    <div class="col-12 form-group">
+                                         
+                                             <select class="form-control" name="types_id" id="types">
+                                                   <option value="">Select type</option>
+                                                   <?PHP
+
+
+foreach($listetypes as $row)
+{
+?>
+                                                   <option value="<?PHP echo $row['id']; ?>"><?PHP echo $row['nomt']; ?></option>
+                                             
+                                                   <?PHP
+}
+?>
+                                                      </select>
+                                    </div>
+                                    
                                     <div class="col-12 form_gallery form-group">
-                                       <label id="gallery2" for="form_gallery-upload">New image</label>
-                                       <input name="img" id="form_gallery-upload" class="form_gallery-upload" value="<?php echo $img; ?>"
+                                       <label id="gallery2" for="form_gallery-upload">Upload Image</label>
+                                       <input name="imgB" id="form_gallery-upload" class="form_gallery-upload"
                                           type="file" accept=".png, .jpg, .jpeg">
                                     </div>
                                    
@@ -523,14 +615,6 @@ if (isset($_GET['id'])){
                                    
                                  </div>
                               </div>
-                              <div class="col-lg-5">
-                                 <div class="d-block position-relative" >
-                                    <div class="form_video-upload" style= "background-color: transparent;">
-                                    <img src="uploads/<?php echo $row['img'];?>"   style="width: 55%">
-                                    </div>
-                                 </div>
-                              </div>
-                              
                             
                            </div>
                            <div class="row">
@@ -538,31 +622,18 @@ if (isset($_GET['id'])){
                               
                               
                               <div class="col-12 form-group ">
-                                 <button type="submit" name="modifier" value="modifier">edit</button>
-                                 <input type="hidden" name="id" value="<?PHP echo $_GET['id'];?>">
+                                 <button type="submit" class="btn btn-primary">Submit</button>
                                  
                               </div>
                            </div>
-                        
-
-
-
                         </form>
-                       
                      </div>
                   </div>
                </div>
             </div>
-            <?PHP
-    }
-}
-
-
-?>
          </div>
       </div>
    </div>
-
 
    <!-- Wrapper END -->
    <div class="rtl-box">

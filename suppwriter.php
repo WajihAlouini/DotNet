@@ -1,10 +1,10 @@
 <?PHP
-include "./Core/writerC.php";
+include "../core/writerC.php";
 $writerC=new writerC();
 
 if (isset($_POST["id"])){
     $writerC->deleteWriter($_POST["id"]);
-    header('Location: video-load-more.php');
+    header('Location: movie-list.php');
 }
 
 ?>
