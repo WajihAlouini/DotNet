@@ -16,6 +16,28 @@
     <link rel="stylesheet" href="css/style.css" />
     <!--  Responsive -->
     <link rel="stylesheet" href="css/responsive.css" />
+<style>
+    .rating {
+        display: inline-block;
+        font-size: 0;
+      }
+      
+      .rating input[type="radio"] {
+        display: none;
+      }
+      
+      .rating label {
+        color:  #ddd;
+        font-size: 2rem;
+        margin-right: .5rem;
+        text-shadow: 1px 1px #bbb;
+        transition: color .4s ease;
+      }
+      
+      .rating input[type="radio"]:checked ~ label {
+        color: #ffcc00;
+      }
+        </style>
 </head>
 
 <body>
@@ -381,18 +403,18 @@
             <div class="row">
                 <div class="col-xl-6">
                     <h2 class="mb-5">get in touch</h2>
-                    <form>
+                    <form action="send.php" method="post">
                         <div class="row gt-form">
-                            <div class="col-md-6 mb-4"><input type="text" name="first_name" placeholder="Your Name">
+                            <div class="col-md-6 mb-4"><input type="text" name="idrec" id="idrec" placeholder="id Reclamation">
                             </div>
-                            <div class="col-md-6 mb-4"><input type="email" name="your-email" placeholder="Email"></div>
-                            <div class="col-md-6 mb-4"><input type="text" name="your-Cell-phone"
-                                    placeholder="Cell Phone">
+                            <div class="col-md-6 mb-4"><input type="text" name="numrec" id="numrec" placeholder="num de Reclamation"></div>
+                            <div class="col-md-6 mb-4"><input type="text" name="titre" id="titre"
+                                    placeholder="titre de Reclamation">
                             </div>
-                            <div class="col-md-6 mb-4"><input type="text" name="your-Venue" placeholder="Venue"></div>
-                            <div class="col-md-12 mb-4"><textarea name="your-message" rows="6"
-                                    placeholder="Your Message"></textarea><br>
-                                <input type="submit" value="Send" class="mt-4">
+                            <div class="col-md-12 mb-4"><textarea name="description" id="description" rows="6"
+                                    placeholder="description"></textarea><br>
+                                    <div class="col-md-6 mb-4"><input type="text" name="iduser" id="iduser" placeholder="id user">
+                                <input type="submit" value="send" class="mt-4">
                             </div>
                         </div>
                     </form>
@@ -403,6 +425,23 @@
                             src="https://maps.google.com/maps?width=100%25&amp;height=550&amp;hl=en&amp;q=+(My%20BusiLondon%20Eye,%20London,%20United%20Kingdomness%20Name)&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                     </div>
                 </div>
+                <h2>rate us</h2>
+                <div class="rating">
+                    
+                    <input type="radio" name="rating" id="star5" value="5">
+                    <label for="star5">&#9734;</label>
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4">&#9734;</label>
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3">&#9734;</label>
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2">&#9734;</label>
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1">&#9734;</label>
+                   
+                  </div>
+                
+                
             </div>
         </div>
     </Section>
