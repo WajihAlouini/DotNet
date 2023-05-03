@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php
+<?php
 
-      session_start ();
-
-    ?> 
-
-
+session_start (); 
+?>
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Streamlab - Video Streaming HTML5 Template" />
@@ -22,6 +19,57 @@
     <link rel="stylesheet" href="css/style.css" />
     <!--  Responsive -->
     <link rel="stylesheet" href="css/responsive.css" />
+    <title>Popup Box Example</title>
+    <style>
+        /* Style for the popup box */
+        .popup {
+            display: none; /* Hide popup by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 999; /* Set a high z-index to ensure the popup appears on top of other content */
+        }
+        .popup-content {
+            background-color: #f9f9f9;
+            width: 500px;
+            height:400px;
+          
+            margin: 100px auto; /* Center the popup vertically and horizontally */
+            text-align: center;
+            border-radius: 5px;
+        }
+        .close {
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+       <style>
+.rating-widget {
+  font-size: 24px;
+  
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.rating-widget .star {
+  cursor: pointer;
+  color: #ccc;
+  
+}
+
+.rating-widget .star:hover,
+.rating-widget .star:hover ~ .star {
+  color: #ffcc00;
+}
+
+
+</style>
 </head>
 
 <body>
@@ -65,7 +113,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="menu-item">
+                                        <li class="menu-item active">
                                             <a href="#">Movies</a>
                                             <i class="fa fa-chevron-down gen-submenu-icon"></i>
                                             <ul class="sub-menu">
@@ -99,7 +147,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="menu-item">
+                                                <li class="menu-item active">
                                                     <a href="single-movie.html">Single Movie</a>
                                                 </li>
                                             </ul>
@@ -146,19 +194,19 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="menu-item active">
-                                            <a href="#">AudioBooks</a>
+                                        <li class="menu-item">
+                                            <a href="#">Video</a>
                                             <i class="fa fa-chevron-down gen-submenu-icon"></i>
                                             <ul class="sub-menu">
                                                 <li class="menu-item menu-item-has-children">
-                                                    <a href="#">AudioBooks</a>
+                                                    <a href="#">Video</a>
                                                     <i class="fa fa-chevron-down gen-submenu-icon"></i>
                                                     <ul class="sub-menu">
-                                                        <li class="menu-item active">
-                                                            <a href="video-load-more.php">Load More</a>
+                                                        <li class="menu-item">
+                                                            <a href="video-load-more.html">Load More</a>
                                                         </li>
                                                         <li class="menu-item">
-                                                            <a href="video-infinite-scroll.php">Infinite scroll</a>
+                                                            <a href="video-infinite-scroll.html">Infinite scroll</a>
                                                         </li>
                                                         <li class="menu-item">
                                                             <a href="video-pagination.html">Pagination</a>
@@ -304,150 +352,289 @@
     </header>
     <!--========== Header ==============-->
 
-    <!-- breadcrumb -->
-    <div class="gen-breadcrumb" style="background-image: url('images/background/asset-25.jpeg');">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <nav aria-label="breadcrumb">
-                        <div class="gen-breadcrumb-title">
-                            <h1>
-                               AudioBook
-                            </h1>
-                        </div>
-                        <div class="gen-breadcrumb-container">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i
-                                            class="fas fa-home mr-2"></i>Home</a></li>
-                                <li class="breadcrumb-item active">AudioBooks</li>
-                            </ol>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb -->
-    
-    <!-- Load More -->
-    <section class="gen-section-padding-3">
 
-    <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-        
+    <?PHP
+include "./entities/books.php";
+include "./core/booksC.php";
+
+$movie1C=new BooksC();
+$listemovie=$movie1C-> AfficherWriters();
+$listegenre=$movie1C-> Affichertypes();
+
+if (isset($_GET['id']) and isset($_GET['types_id'])){
+    $BooksC = new BooksC();
+    $result=$BooksC->recuperbook($_GET['id']);
+    $liste = $BooksC->recuperbooksBytypes($_GET['types_id']);
+    
+
+    foreach($result as $row){
+        $nomB=$row['nomB'];
+        $DescB=$row['DescB'];
+        $UrlB=$row['UrlB'];
+        $duree=$row['duree'];
+        $Released=$row['Released'];
+        $imgB=$row['imgB'];
+        $types_id=$row['type_name'];
+        $writer_id=$row['writer_name'];
+        $types=$row['types_id'];
        
-<?php
-                            include "./core/booksC.php";
-                            $movie1C=new BooksC();
-                            $listemovie=$movie1C-> Afficherbook();
-                        
-                            ?>
 
-<table border="1">
-
-<?PHP
-
-
-foreach($listemovie as $row)
-{
-    ?>
-
-
-
-<tr >
-<td rowspan="2">
-   
-<div class="container">
+        
     
-    <div class="col-xl-3 col-lg-4 col-md-6" >
-                            <div class="gen-carousel-movies-style-3 movie-grid style-3">
-                                <div class="gen-movie-contain" style="width: 450px" >
-                                    <div class="gen-movie-img">
-                                        <img src="../admin/theme/uploads/<?php echo $row['imgB'];?>" alt="streamlab-image">
-                                        <div class="gen-movie-add">
-                                            <div class="wpulike wpulike-heart">
-                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-                                                        type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                </div>
-                                            </div>
-                                            <ul class="menu bottomRight">
-                                                <li class="share top">
-                                                    <i class="fa fa-share-alt"></i>
-                                                    <ul class="submenu">
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-instagram"></i></a>
-                                                        </li>
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                    </ul>
+?>
+    <!-- Single movie Start -->
+    <section class="gen-section-padding-3 gen-single-movie">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-12">
+                    <div class="gen-single-movie-wrapper style-1">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="gen-video-holder">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?PHP echo $UrlB ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="gen-single-movie-info">
+                                    <h2 class="gen-title"><?PHP echo $nomB ?></h2>
+                                    <div class="gen-single-meta-holder">
+                                        <ul>
+                                            <li class="gen-sen-rating">TV-PG</li>
+                                           
+                                        </ul>
+                                    </div>
+                                    <div class="rating-widget">
+  <a href="#" onclick="submitRating(<?php echo $row['id']; ?>, 5 ,<?php echo $row['types_id']; ?>)" data-value="5" class="star">&#9733;</a>
+  <a href="#" onclick="submitRating(<?php echo $row['id']; ?>, 4,<?php echo $row['types_id']; ?>)" data-value="4" class="star">&#9733;</a>
+  <a href="#" onclick="submitRating(<?php echo $row['id']; ?>, 3,<?php echo $row['types_id']; ?>)" data-value="3" class="star">&#9733;</a>
+  <a href="#" onclick="submitRating(<?php echo $row['id']; ?>, 2,<?php echo $row['types_id']; ?>)" data-value="2" class="star">&#9733;</a>
+  <a href="#" onclick="submitRating(<?php echo $row['id']; ?>, 1,<?php echo $row['types_id']; ?>)" data-value="1" class="star">&#9733;</a>
+</div>
+<script>
+// Load the saved rating from Local Storage
+var savedRating = localStorage.getItem("rating_<?php echo $row['id']; ?>");
+if (savedRating) {
+  var stars = document.querySelectorAll('.rating-widget a.star');
+  stars.forEach(function(star) {
+    if (star.getAttribute('data-value') <= savedRating) {
+      star.classList.add('selected');
+    }
+    if (star.getAttribute('data-value') < savedRating) {
+      star.classList.add('disabled');
+      star.removeAttribute('href');
+    }
+  });
+}
+
+function submitRating(booksId, rating ,typesId) {
+  var savedRating = localStorage.getItem("rating_<?php echo $row['id']; ?>");
+  if (savedRating) {
+    return;
+  }
+  
+
+  var url = "submit.php?id=" + booksId + "&types_id=" + typesId + "&rating=" + rating;
+  var stars = document.querySelectorAll('.rating-widget a.star');
+  stars.forEach(function(star) {
+    if (star.getAttribute('data-value') <= rating) {
+      star.classList.add('selected');
+    }
+    if (star.getAttribute('data-value') < rating) {
+      star.classList.add('disabled');
+      star.removeAttribute('href');
+    }
+  });
+  localStorage.setItem("rating_<?php echo $row['id']; ?>", rating);
+  stars.forEach(function(star) {
+    star.removeAttribute('onclick');
+  });
+  window.location.href = url; // redirect to the URL
+}
+</script>
+
+
+
+<style>
+.rating-widget a.star.selected {
+  color: orange;
+}
+</style>
+
+                        
+                                    <p style ="width:1200px; margin-top:30px ; margin-right:200px">
+                                    <?PHP echo $row['DescB']; ?>
+                                    </p>
+                                    <div class="gen-after-excerpt">
+                                        <div class="gen-extra-data">
+                            
+
+
+    </span>
+                                                </li>
+
+
+
+
+
+                                                <li>
+                                                    <span>Writer :</span>
+                                                    <span><?PHP echo $writer_id ?></span>
+                                                </li>
+                                                <li><span>Type :</span>
+                                                    <span>
+                                                        <a href="action.html">
+                                                        <?PHP echo $types_id ?>,</a>
+                                                    </span>
+                                                   
+                                                </li>
+                                                <li><span>Run Time :</span>
+                                                    <span><?PHP echo $duree ?> mins</span>
+                                                </li>
+                                                <li>
+                                                    <span>Release Date :</span>
+                                                    <span><?PHP echo $Released ?></span>
                                                 </li>
                                             </ul>
-                                            <div class="movie-actions--link_add-to-playlist dropdown">
-                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                        class="fa fa-plus"></i></a>
-                                                <div class="dropdown-menu mCustomScrollbar">
-                                                    <div class="mCustomScrollBox">
-                                                        <div class="mCSB_container">
-                                                            <a class="login-link" href="#">Sign in to add this movie to
-                                                                a
-                                                                playlist.</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <!-- <div class="gen-movie-action">
-                                            <a href="single-movie.html" class="gen-button">
-                                                <i class="fa fa-play"></i>
-                                            </a>
-                                        </div> -->
-                                    </div>
-                                    <div class="gen-info-contain">
-                                        <div class="gen-movie-info">
-                                            <h3><a href="single-movie.php?id=<?PHP echo $row['id']; ?>&types_id=<?php echo $row['types_id']?>"><?PHP echo $row['nomB']; ?></a></h3>
-                                        </div>
-
-                
-
-
-                                        <div class="gen-movie-meta-holder">
-                                            <ul>
-                                                <li><?PHP echo $row['type_name']; ?></li>
-                                                <li>
-                                                    <a href="#"><span><?PHP echo $row['duree']; ?> mins</span></a>
+                                        <div class="gen-socail-share">
+                                            <h4 class="align-self-center">Social Share :</h4>
+                                            <ul class="social-inner">
+                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
                                                 </li>
+                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+                                                </li>
+                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                </div>
-                
-            </div>
-</div>
 
-
-</td>
-
-
-</tr>
-    <?PHP
+                            <?PHP
+    }
 }
+
+
 ?>
-</table>
-</div>
+                            <div class="col-lg-12">
+                                <div class="pm-inner">
+                                    <div class="gen-more-like">
+                                        <h5 class="gen-more-title">More Like This</h5>
+                                        <div class="row">
+
+                                        <?PHP
+                                        
+                                        foreach($liste as $row){
+                                            $id=$row['id'];
+                                            $nomB=$row['nomB'];
+                                            $DescB=$row['DescB'];
+                                            $UrlB=$row['UrlB'];
+                                            $duree=$row['duree'];
+                                            $Released=$row['Released'];
+                                            $imgB=$row['imgB'];
+                                            $types_id=$row['types_name'];
+                                            $writer_id=$row['writer_name'];
+                                            $types=$row['types_id'];
+                                           
+                                           
+                                    
+                                            
+                                        
+                                    ?>
+                                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                                <div class="gen-carousel-movies-style-3 movie-grid style-3">
+                                                    <div class="gen-movie-contain">
+                                                        <div class="gen-movie-img">
+                                                        <img src="../admin/theme/uploads/<?PHP echo $imgB ?>" alt="streamlab-image">
+                                                               
+                                                            <div class="gen-movie-add">
+                                                                <div class="wpulike wpulike-heart">
+                                                                    <div
+                                                                        class="wp_ulike_general_class wp_ulike_is_not_liked">
+                                                                        <button type="button"
+                                                                            class="wp_ulike_btn wp_ulike_put_image"></button>
+                                                                    </div>
+                                                                </div>
+                                                                <ul class="menu bottomRight">
+                                                                    <li class="share top">
+                                                                        <i class="fa fa-share-alt"></i>
+                                                                        <ul class="submenu">
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-facebook-f"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-instagram"></i></a>
+                                                                            </li>
+                                                                            <li><a href="#" class="facebook"><i
+                                                                                        class="fab fa-twitter"></i></a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                                <div
+                                                                    class="movie-actions--link_add-to-playlist dropdown">
+                                                                    <a class="dropdown-toggle" href="#"
+                                                                        data-toggle="dropdown"><i
+                                                                            class="fa fa-plus"></i></a>
+                                                                    <div class="dropdown-menu mCustomScrollbar">
+                                                                        <div class="mCustomScrollBox">
+                                                                            <div class="mCSB_container">
+                                                                                <a class="login-link" href="#">Sign in
+                                                                                    to add this movie to
+                                                                                    a
+                                                                                    playlist.</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="gen-movie-action">
+                                                               
+                                                                    
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                        <div class="gen-info-contain">
+                                                            <div class="gen-movie-info">
+                                                            <h3><a href="single-movie.php?id=<?PHP echo $id?>&types_id=<?PHP echo $types?>; ?>"><?PHP echo $nomB?></a></h3>
+                                                            </div>
+                                                            <div class="gen-movie-meta-holder">
+                                                                <ul>
+                                                                <li><?PHP echo $duree ?> mins</li>
+                                                                    <li>
+                                                                    <a href="action.html"><span><?PHP echo $types_id ?></span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?PHP
+    }
+   
 
 
 
-
+?>
+                                            
+                                          
+                                        
+                                         
+                                          
+                                        
+                                          
+                                           
+                                       
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    <!-- Load More -->
+    <!-- Single movie End -->
 
     <!-- footer start -->
     <footer id="gen-footer">
@@ -482,7 +669,7 @@ foreach($listemovie as $row)
                                         </li>
                                         <li class="menu-item"><a href="movies-pagination.html">Movies</a></li>
                                         <li class="menu-item"><a href="tv-shows-pagination.html">Tv Shows</a></li>
-                                        <li class="menu-item"><a href="video-pagination.html">AudioBooks</a></li>
+                                        <li class="menu-item"><a href="video-pagination.html">Videos</a></li>
                                         <li class="menu-item"><a href="#">Actors</a></li>
                                         <li class="menu-item"><a href="#">Basketball</a></li>
                                         <li class="menu-item"><a href="#">Celebrity</a></li>
