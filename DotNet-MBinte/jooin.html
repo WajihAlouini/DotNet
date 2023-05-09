@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reclamation Records</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, div{
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="submit"] {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #eee;
+}
+
+table td:last-child {
+    text-align: center;
+}
+
+table td a {
+    color: #000;
+    text-decoration: none;
+}
+
+table td a:hover {
+    color: #f00;
+}
+body {
+  background-color: rgba(255, 0, 0, 0.685);
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Reponse</h1>
+  <table>
+    <thead>
+      <tr>
+    <form action="join.php" method="post">
+    <th><label for="idrep">idrep:</label></th>
+    <th><input type="text" name="idrep" id="idrep" required></th>
+        <th><label for="idrec">idrec:</label></th>
+        <th><input type="text" name="idrec" id="idrec" required></th>
+        <th> <label for="iduser">iduser:</label><th>
+        <th> <input type="text" name="iduser" id="iduser" required></th>
+        <th><label for="reponse">reponse:</label></th>
+        <th> <textarea name="reponse" rows="10" cols="30"></textarea></th>
+        <input type="submit" value="send">
+    </form>
+
+    
+    </table>
+ 
+</body>
+</html>
