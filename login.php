@@ -3,7 +3,7 @@ require 'connection.php';
 
 try{
 
-    $query = $pdo->prepare('SELECT * FROM login WHERE Name=:Name && Password=:Password');
+    $query = $pdo->prepare('SELECT * FROM accounts WHERE Name=:Name && Password=:Password');
     $query->bindParam(':Name',$_POST['log']);
     $query->bindParam(':Password',$_POST['pwd']);
 
